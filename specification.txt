@@ -26,8 +26,39 @@ Több pénzügyi eszköz kiválsaztása eestén a hozamok és költségek kiszámítása
 mnb: lazy singleton, államkincstár: greedy singleton
 Jegybank és Államkincstár is egy van a magyar pénzrendszerben. A jegybank általában késve avatkozik be az árfolyam romlása esetén. A jegybank viszont hamar tud változtatni az új állampapír sorozatok kiadásával.
 
-új állampapír létrehozása: factory
+új állampapír létrehozása: factory  (tanári javaslat: prototype)
 Új állampapír létrehozásánál kamatozási módok, költségek, és mûködési módokból új állampapír példány legyártása.
 
 árfolyamok, infláció frissítése: observer
 A valuta árfolyamok és infláció értéke folyamatosan frissül a állampapír futamideje alatt. Ezeket kérik le az egyes hozam és költség számoló metódusok.
+
+
+Design principles:
+OCP:
+A meglévõ tesztelt kódot nem változtatom meg, írok új metódust a bõvítéshez.
+
+GOF1:
+pl:
+PMAP PMAP2025_2 = new PMAP(); helyett
+Penzugyi Eszkoz PMAP2025_2 = new PMAP();
+
+GOF2:
+Öröklések helyett objektumösszetételt használok. Pl Az egyes állampapírokat nem örököltetem az állampapírokból, hanem a különbözõ osztályokban definiált obkjektumok összetételével oldom meg.
+
+SRP:
+minden osztálynak egy felelõsséget adok, tehát külön osztályokba teszem az egymástól független metódusokat.
+
+
+LSP: 
+
+
+
+Unit tests:
+1) 
+A különbözõ állampapírok hozamainak és költségeinek ellenõrzése manuális számításos unit teszttel
+
+2) 
+Vételi és eladási árfolyamok tesztelése manuális számításos unit teszttel
+
+3)
+inflációs értékcsökkenések ellenõrzése manuális számításos unit teszttel
