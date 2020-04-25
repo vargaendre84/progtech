@@ -5,8 +5,12 @@ hozamok számolása
 Megvalósítás:
 Java alkalmazás, parancssorral (esetleg egyszerû Swing felhasználói felülettel)
 
+
 Mûködés:
-Az alkalmazás állampapírokat tart nyilván, azok adataival, kamataival, futamidejével, visszaváltási költségével, vételi és eladási árfolyamaival. Az alkalmazás fõ fókusza a Prémium Állampapír, a Magyar Állampapír Plusz, Kincstárjegy. A programba beírható lesz milyen összeget kívánunk állampapírbe fektetni, és ez milyen hozamot tud elérni és milyen költségeket kell kifizetni. Ezt összehasonlítja, a készpénzben tartás, a bankbetét, illetve külföldi valutában tartás hozamait, és költségeit, figyelembe véve az árfolyamváltozásokat, és az infláció okozta értékcsökkentést.
+Az alkalmazás állampapírokat tart nyilván, azok adataival, kamataival, futamidejével, visszaváltási költségével, vételi és eladási árfolyamaival. Az alkalmazás fõ fókusza a Prémium Állampapír, a Magyar Állampapír Plusz, Kincstárjegy. 
+A programba beírható lesz milyen összeget kívánunk állampapírba fektetni, és ez milyen hozamot tud elérni és milyen költségeket kell kifizetni. Ezt összehasonlítja, a készpénzben tartás, a bankbetét, illetve külföldi valutában tartás hozamait, és költségeit. 
+Az alkalmazás figyelembe veszi az árfolyamváltozásokat, és az infláció okozta értékcsökkentést.
+A program a megadott beállításoknak megfelelõen megjeleníti a legjobb hozamot elõrejelzõ befektetési formát.
 
 
 
