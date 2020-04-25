@@ -17,11 +17,17 @@ A program a megadott beállításoknak megfelelõen megjeleníti a legjobb hozamot el
 Tervezési minták:
 
 Állampapírok csoportja: strategy
+Az állampapírok különbözõképp kamatoznak, különbözõ az eladási, vételi árfolyamuk, ezen metódusok lesznek kiszervezve Külön Behaviour osztályokba
 
-pénzügyi eszközök kamata / értékvesztése: decorator
+pénzügyi eszközök portfóliójánka hozama költsége : decorator
+Több pénzügyi eszköz kiválsaztása eestén a hozamok és költségek kiszámítása
+
 
 mnb: lazy singleton, államkincstár: greedy singleton
+Jegybank és Államkincstár is egy van a magyar pénzrendszerben. A jegybank általában késve avatkozik be az árfolyam romlása esetén. A jegybank viszont hamar tud változtatni az új állampapír sorozatok kiadásával.
 
 új állampapír létrehozása: factory
+Új állampapír létrehozásánál kamatozási módok, költségek, és mûködési módokból új állampapír példány legyártása.
 
 árfolyamok, infláció frissítése: observer
+A valuta árfolyamok és infláció értéke folyamatosan frissül a állampapír futamideje alatt. Ezeket kérik le az egyes hozam és költség számoló metódusok.
