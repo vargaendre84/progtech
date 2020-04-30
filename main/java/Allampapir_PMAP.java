@@ -1,17 +1,20 @@
-public class Allampapir_PMAP extends AllamKotveny
+public class Allampapir_PMAP extends AllamPapir
 {
-    Strategia_Kamatozasi kamat;
+    KamatozasiStrategia kamat;
+    KoltsegStrategia koltseg;
     private String nev;
 
-    public Allampapir_PMAP(Strategia_Kamatozasi kamat, String nev)
+    public Allampapir_PMAP(KamatozasiStrategia kamat, KoltsegStrategia koltseg, String nev)
     {
         this.kamat = kamat;
+        this.koltseg = koltseg;
         this.nev = nev;
     }
+
     @Override
     public void getNev()
     {
-        System.out.println();
+        System.out.println(nev);
     }
 
     @Override
@@ -19,8 +22,6 @@ public class Allampapir_PMAP extends AllamKotveny
         kamat.Kamatozas();
     }
 
-
     @Override
-    public void VisszaValtasiKoltseg() {
-    }
+    public void KoltsegSzamitas(){koltseg.KoltsegSzamitas();}
 }

@@ -1,24 +1,40 @@
-public class Kamatozas_InflacioAlapu extends Strategia_Kamatozasi
-{
-    private Viselkedes_Inflacio inflacio;
-    private double kamatpremium;
-    private int nevertek;
-    private int futamido;
-    private boolean tbsz;
-    Kamatado kamatado;
+import java.rmi.dgc.Lease;
 
-    public Kamatozas_InflacioAlapu(int nevertek, int futamido, double kamatpremium, boolean tbsz)
+public class Kamatozas_InflacioAlapu extends KamatozasiStrategia
+{
+    private int nevErtek;
+    private int lejaratiIdo;
+    private int futamIdo;
+    private double kamatPremium;
+    private boolean tbsz;
+
+    Kamatado kamatado = new Kamatado();
+    Inflacio inflacio = new Inflacio();
+    Portfolio myPortfolio = Portfolio.getInstance();
+
+    public Kamatozas_InflacioAlapu(int nevErtek, int lejaratiIdo, int futamIdo, double kamatPremium, boolean tbsz)
     {
-        this.nevertek = nevertek;
-        this.futamido = futamido;
-        this.kamatpremium = kamatpremium;
+        this.nevErtek = nevErtek;
+        this.lejaratiIdo = lejaratiIdo;
+        this.futamIdo = futamIdo;
+        this.kamatPremium = kamatPremium;
         this.tbsz = tbsz;
     }
 
     @Override
     public void Kamatozas()
     {
-        System.out.println(nevertek * (kamatpremium + inflacio.AktualisInflacio()) * (1-kamatado.getKamatado(tbsz) * futamido)) ;
+        double aktualisKamat = 0.0;
+        int aktualisEv = lejaratiIdo;
+        if( futamIdo > lejaratiIdo) futamIdo = lejaratiIdo;
+        for(int i = 0; i < futamIdo; i++)
+        {
+            aktualisKamat += nevErtek * (kamatPremium + inflacio.getEvesInflacio(aktualisEv)) * (1.0 - kamatado.getKamatado(tbsz));
+            aktualisEv++;
+        }
+        System.out.println(aktualisKamat) ;
+        myPortfolio.addNevertek(nevErtek);
+        myPortfolio.addKamat(aktualisKamat);
     }
 
 }
