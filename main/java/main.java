@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class main {
 
@@ -16,9 +18,12 @@ public class main {
         int befektetes = 1000000;
         int futamIdo = 3;
         int kezdoEv = 2020;
+        double aktualisEURArfolyam;
+        double aktualisUSDArfolyam;
 
-     /* BufferedReader reader =
+        BufferedReader reader =
                 new BufferedReader(new InputStreamReader(System.in));
+      /*
         System.out.println("Adja meg milyen összeget akar befektetni: ");
         befektetes = Integer.parseInt(reader.readLine());
         System.out.println("Hány évre szeretné lekötni? (maximum 5év lehetséges) ");
@@ -26,6 +31,20 @@ public class main {
         System.out.println("Melyik évben szeretné megvenni a papírt? ");
         kezdoEv = Integer.parseInt(reader.readLine());
     */
+        Penzvalto penzvalto = new Penzvalto();
+        Valuta_Euro euroValuta = new Valuta_Euro(penzvalto);
+        Valuta_USD dollarValuta = new Valuta_USD(penzvalto);
+
+        System.out.print("Adja meg az aktuális EUR vételi árfolyamot: ");
+        aktualisEURArfolyam = Double.parseDouble(reader.readLine());
+        System.out.print("Adja meg az aktuális USD vételi árfolyamot: ");
+        aktualisUSDArfolyam = Double.parseDouble(reader.readLine());
+        penzvalto.ArfolyamBeallitasa(aktualisEURArfolyam,aktualisUSDArfolyam);
+
+        System.out.println("Aktuális EUR és USD árfolyam frissítve: ");
+        euroValuta.Display();
+        dollarValuta.Display();
+
         AllamPapir EMAP2021_18 = new Allampapir_EMAP(new Kamatozas_Normal(befektetes,1,futamIdo,0.025,false),
                 new KoltsegStrategia(befektetes,1,futamIdo,0.025,false),
                 "Egy éves magyar Állampapír 2021-18");

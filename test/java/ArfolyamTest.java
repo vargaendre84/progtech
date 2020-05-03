@@ -2,7 +2,9 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
-public class InflacioTest
+import static org.junit.Assert.assertEquals;
+
+public class ArfolyamTest
 {
     @Test
     public void getEvesInflacioDefault() throws Exception

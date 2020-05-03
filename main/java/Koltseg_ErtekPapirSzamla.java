@@ -4,7 +4,8 @@ public class Koltseg_ErtekPapirSzamla extends KoltsegDecorator
     private double ertekpapirSzamlaDij = 0.0022;  //OTP értékpapírszámla 2020.03.01-től
 
     @Override
-    public String getKoltsegNem() {
+    public String getKoltsegNem()
+    {
         return alapKoltseg.getKoltsegNem() + " + értékpapír számla éves díja ";
     }
 
