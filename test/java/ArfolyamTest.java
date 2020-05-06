@@ -1,26 +1,34 @@
+import Observer.Arfolyam_Euro;
+import Observer.Arfolyam_USD;
+import Observer.Penzvalto;
 import org.junit.Test;
 import org.junit.Assert;
-import static org.junit.Assert.*;
 
 import static org.junit.Assert.assertEquals;
 
 public class ArfolyamTest
 {
+    Penzvalto penzvalto = new Penzvalto();
+    Arfolyam_Euro euroValuta = new Arfolyam_Euro(penzvalto);
+    Arfolyam_USD dollarValuta = new Arfolyam_USD(penzvalto);
+    double tesztEURArfolyam = 360.0;
+    double tesztUSDArfolyam = 321.0;
+
     @Test
-    public void getEvesInflacioDefault() throws Exception
+    public void getEURArfolyam() throws Exception
     {
+        penzvalto.ArfolyamBeallitas(tesztEURArfolyam,tesztUSDArfolyam);
         Assert.assertTrue(true);
-        Inflacio inf = new Inflacio();
-        double expected = 0.034;
-        assertEquals(expected,inf.getEvesInflacio(1),0.0);
+        double expected = tesztEURArfolyam;
+        assertEquals(expected,euroValuta.getEuroArfolyam(),0.01);
     }
 
     @Test
-    public void getEvesInflacio2020() throws Exception
+    public void getUSDArfolyam() throws Exception
     {
+        penzvalto.ArfolyamBeallitas(tesztEURArfolyam,tesztUSDArfolyam);
         Assert.assertTrue(true);
-        Inflacio inf = new Inflacio();
-        double expected = 0.039;
-        assertEquals(expected,inf.getEvesInflacio(2020),0.0);
+        double expected = tesztUSDArfolyam;
+        assertEquals(expected, dollarValuta.getUSDArfolyam(),0.01);;
     }
 }

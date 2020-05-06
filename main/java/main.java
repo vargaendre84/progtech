@@ -1,6 +1,11 @@
+import Observer.*;
+import Decorator.*;
+import Strategy.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 
 public class main {
 
@@ -13,13 +18,12 @@ public class main {
         final Allamkincstar allamkincstar = Allamkincstar.getInstance();
         allamkincstar.allamkincstar = "Magyar Államkincstár";
 
-        final Portfolio myPortfolio = Portfolio.getInstance();
+        final Egyenleg myEgyenleg = Egyenleg.getInstance();
 
         int befektetes = 1000000;
         int futamIdo = 3;
-        int kezdoEv = 2020;
-        double aktualisEURArfolyam;
-        double aktualisUSDArfolyam;
+        double aktualisEURArfolyam = 360.0;
+        double aktualisUSDArfolyam = 321.0;
 
         BufferedReader reader =
                 new BufferedReader(new InputStreamReader(System.in));
@@ -32,51 +36,45 @@ public class main {
         kezdoEv = Integer.parseInt(reader.readLine());
     */
         Penzvalto penzvalto = new Penzvalto();
-        Valuta_Euro euroValuta = new Valuta_Euro(penzvalto);
-        Valuta_USD dollarValuta = new Valuta_USD(penzvalto);
+        Arfolyam_Euro euroValuta = new Arfolyam_Euro(penzvalto);
+        Arfolyam_USD dollarValuta = new Arfolyam_USD(penzvalto);
 
-        System.out.print("Adja meg az aktuális EUR vételi árfolyamot: ");
+     /*   System.out.print("Adja meg az aktuális EUR vételi árfolyamot: ");
         aktualisEURArfolyam = Double.parseDouble(reader.readLine());
         System.out.print("Adja meg az aktuális USD vételi árfolyamot: ");
         aktualisUSDArfolyam = Double.parseDouble(reader.readLine());
-        penzvalto.ArfolyamBeallitasa(aktualisEURArfolyam,aktualisUSDArfolyam);
-
+        penzvalto.ArfolyamBeallitas(aktualisEURArfolyam,aktualisUSDArfolyam);
+    */
         System.out.println("Aktuális EUR és USD árfolyam frissítve: ");
         euroValuta.Display();
         dollarValuta.Display();
 
         AllamPapir EMAP2021_18 = new Allampapir_EMAP(new Kamatozas_Normal(befektetes,1,futamIdo,0.025,false),
-                new KoltsegStrategia(befektetes,1,futamIdo,0.025,false),
+                new KoltsegStrategia(befektetes,1,futamIdo,false,true),
                 "Egy éves magyar Állampapír 2021-18");
 
         AllamPapir PMAP2025J = new Allampapir_PMAP(new Kamatozas_InflacioAlapu(befektetes,5,futamIdo,0.014,false),
-                new KoltsegStrategia(befektetes,5,futamIdo,0.014,false),
+                new KoltsegStrategia(befektetes,5,futamIdo,true,false),
                 "Prémium Magyar Állampapír 2025-J");
 
+        myEgyenleg.addNevertek(befektetes);
 
-        System.out.print("Állampapír neve: ");
         EMAP2021_18.getNev();
-        System.out.print("Állampapír kamatozása: ");
         EMAP2021_18.Kamatozas();
-        System.out.print("Állampapír költsége: ");
         EMAP2021_18.KoltsegSzamitas();
 
-        System.out.print("Állampapír neve: ");
         PMAP2025J.getNev();
-        System.out.print("Állampapír kamatozása: ");
         PMAP2025J.Kamatozas();
-        System.out.print("Állampapír költsége: ");
         PMAP2025J.KoltsegSzamitas();
 
-        System.out.println("A portfólió összes névértéke= " + myPortfolio.getOsszesNevErtek());
-        System.out.println("A portfólió összes kamata= " + myPortfolio.getOsszesKamat());
-        System.out.println("A portfólió összes költsége= " + myPortfolio.getOsszesKoltseg());
-        System.out.println("A portfólió mérlege= " + myPortfolio.getMerleg());
+        System.out.println("A portfólió összes névértéke= " + myEgyenleg.getOsszesNevErtek());
+        System.out.println("A portfólió összes kamata= " + myEgyenleg.getOsszesKamat());
+        System.out.println("A portfólió összes költsége= " + myEgyenleg.getOsszesKoltseg());
+        System.out.println("A portfólió mérlege= " + myEgyenleg.getMerleg());
 
         /*System.out.print("Állampapír neve: ");
         EMAPtemp.getNev();
         System.out.print("Állampapír kamatozása: ");
         EMAPtemp.Kamatozas();*/
     }
-
 }
