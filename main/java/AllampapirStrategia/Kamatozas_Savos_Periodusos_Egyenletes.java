@@ -1,4 +1,4 @@
-package Strategy;
+package AllampapirStrategia;
 
 public class Kamatozas_Savos_Periodusos_Egyenletes extends KamatozasiStrategia
 {
@@ -13,7 +13,6 @@ public class Kamatozas_Savos_Periodusos_Egyenletes extends KamatozasiStrategia
         this.periodusHossz = periodusHossz;
         this.kamatValtozas = kamatValtozas;
     }
-
 
     @Override
     public void Kamatozas()

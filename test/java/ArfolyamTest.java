@@ -1,6 +1,6 @@
-import Observer.Arfolyam_Euro;
-import Observer.Arfolyam_USD;
-import Observer.Penzvalto;
+import ArfolyamObserver.Arfolyam_Euro;
+import ArfolyamObserver.Arfolyam_USD;
+import ArfolyamObserver.Penzvalto;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -20,7 +20,7 @@ public class ArfolyamTest
         penzvalto.ArfolyamBeallitas(tesztEURArfolyam,tesztUSDArfolyam);
         Assert.assertTrue(true);
         double expected = tesztEURArfolyam;
-        assertEquals(expected,euroValuta.getEuroArfolyam(),0.01);
+        assertEquals(expected,euroValuta.getArfolyam(),0.01);
     }
 
     @Test
@@ -29,6 +29,6 @@ public class ArfolyamTest
         penzvalto.ArfolyamBeallitas(tesztEURArfolyam,tesztUSDArfolyam);
         Assert.assertTrue(true);
         double expected = tesztUSDArfolyam;
-        assertEquals(expected, dollarValuta.getUSDArfolyam(),0.01);;
+        assertEquals(expected, dollarValuta.getArfolyam(),0.01);;
     }
 }

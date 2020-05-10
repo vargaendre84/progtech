@@ -1,4 +1,4 @@
-package Observer;
+package ArfolyamObserver;
 
 public class Arfolyam_USD implements IDisplay,IObserver
 {
@@ -17,7 +17,7 @@ public class Arfolyam_USD implements IDisplay,IObserver
         this.usdArfolyam = usdArfolyam;
     }
 
-    public double getUSDArfolyam()
+    public double getArfolyam()
     {
         return usdArfolyam;
     }

@@ -1,7 +1,7 @@
-package Decorator;
+package KoltsegDecorator;
 
 public interface IKoltseg
 {
     String getKoltsegNem();
-    double getKoltseg(int nevErtek, int lejaratiIdo, int futamIdo, boolean befektetesiAlap, boolean ertekpapirSzamla);
+    double getKoltseg(long nevErtek);
 }
